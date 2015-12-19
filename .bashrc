@@ -14,10 +14,5 @@ export PATH=$PATH:/Applications/MAMP/bin/php/php5.4.4/bin:/usr/local/bin/git/:~/
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# rubyenv
-eval "$(rbenv init -)"
-
 # python
 export PYENV_ROOT=/usr/local/opt/pyenv
-
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
