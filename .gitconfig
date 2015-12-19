@@ -1,0 +1,60 @@
+[user]
+	name = egapool
+	email = egpersent@gmail.com
+
+[core]
+	excludesfile = ~/.gitignore_global
+
+[diff]
+	tool = opendiff
+
+[difftool]
+    prompt = false
+
+
+[merge]
+    tool = "twdiff"
+
+[mergetool]
+    prompt = false
+
+[mergetool "twdiff"]
+    cmd = /Applications/TextWrangler.app --wait --resume "$LOCAL" "$REMOTE"
+
+[merge]
+    # from 1.7.6
+    autocrlf = false
+    quotepath = false
+    preloadindex = true
+    fscache = true
+
+[alias]
+    # http://oli.jp/2012/git-powerup/
+    # http://blog.blindgaenger.net/advanced_git_aliases.html
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+    p = !git push origin `git rev-parse --abbrev-ref HEAD`
+    pl = !git pull origin `git rev-parse --abbrev-ref HEAD`
+    ad = add --all
+    b = branch -a
+    br = browse-remote
+    ci = commit
+    cim = commit -m
+    co = checkout
+    d = difftool -d
+    dc = diff --cached
+    di = diff
+    dic = diff --cached
+    f = fetch --prune
+    fs = !git f && git su
+    ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore
+    info = remote show origin
+    l = log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+    ll = log --stat --abbrev-commit
+    ln = log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset' --name-status
+    lp = log --oneline -n 20 -p
+    ls = log --stat --abbrev-commit -n 1 # display previous log
+    s = status --short --branch
+    st = status
+    su = submodule update
+    dl = branch -D
+    pr = remote prune origin
