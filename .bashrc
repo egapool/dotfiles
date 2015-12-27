@@ -5,11 +5,12 @@ GIT_PS1_SHOWDIRTYSTATE=true
 
 PS1='[\u@\h \W]$(__git_ps1 "[\[\033[32m\]%s\[\033[0m\]]")\$ '
 
-alias dev='cd ~/Develop/public/'
+alias dev='cd ~/Develop/'
 alias cent='cd ~/Develop/centos64/'
+alias pub='cd ~/Develop/vagrant/centos64/public_html'
 alias la='ls -la'
 
-export PATH=$PATH:/Applications/MAMP/bin/php/php5.4.4/bin:/usr/local/bin/git/:~/bin/
+export PATH=$PATH:/usr/local/bin/git/:~/bin/
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
