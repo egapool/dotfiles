@@ -13,3 +13,30 @@ set split-view-height = 80%
 
 # 差分の前後の表示行数（diff-context)を指定 
 set diff-context = 6
+
+# untracked files の可視化
+set status-show-untracked-files = yes
+
+# Color Settings
+color default white black
+color cursor default magenta
+color date cyan default
+color delimiter cyan default
+color line-number yellow default
+color diff-header yellow default
+color diff-index cyan default
+color diff-chunk magenta default
+color "Reported-by:" green default
+color graph-commit cyan default
+
+#color diff-oldmode cyan default
+#color diff-newmode cyan default
+#color diff-copy-from cyan default
+#color diff-copy-to cyan default
+#color diff-rename-from cyan default
+#color diff-rename-to cyan default
+#color diff-deleted-file-mode cyan default
+#color diff-similarity cyan default
+#color diff-dissimilarity diff-tree cyan default
+#color diff-index cyan default
+color diff-stat cyan default
