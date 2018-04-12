@@ -40,3 +40,6 @@ color graph-commit cyan default
 #color diff-dissimilarity diff-tree cyan default
 #color diff-index cyan default
 color diff-stat cyan default
+
+bind main    R !git rebase -i %(commit)
+bind diff    R !git rebase -i %(commit)

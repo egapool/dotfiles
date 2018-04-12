@@ -28,6 +28,8 @@
     preloadindex = true
     fscache = true
 
+[fetch]
+    prune = true
 [alias]
     # http://oli.jp/2012/git-powerup/
     # http://blog.blindgaenger.net/advanced_git_aliases.html
