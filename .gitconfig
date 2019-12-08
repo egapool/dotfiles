@@ -60,4 +60,6 @@
     st = status
     su = submodule update
     dl = branch -D
-    pr = remote prune origin
+    dlall = !git branch --merged | grep -vE 'master$|develop$' | xargs -I % git branch -d %
+	  pr = pull-request
+    #delete-merged-branch = !git branch --merged|egrep -v '\*|develop|master'|xargs git branch -d

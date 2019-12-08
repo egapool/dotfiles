@@ -17,6 +17,14 @@ set diff-context = 6
 # untracked files の可視化
 set status-show-untracked-files = yes
 
+# S で stash save
+bind generic S      ?git stash save "%(prompt Enter stash comment: )"
+
+# B でブランチを作成してそのブランチに移動 (checkout -b)
+bind main    B      ?git checkout -b "%(prompt Enter branch name: )" %(branch)
+bind refs    B      ?git checkout -b "%(prompt Enter branch name: )" %(branch)
+bind main    <Esc>b ?git checkout -b "%(prompt Enter branch name: )" %(commit)
+
 # Color Settings
 #color default white black
 #color cursor default magenta
@@ -52,7 +60,7 @@ set status-show-untracked-files = yes
 # Color Settings chocolatte
 # general
 color   default                 15      235
-color   cursor                  15      241
+color   cursor                  15      190
 color   title-focus             15     221
 color   title-blur              15     221
 color   delimiter               213     default
@@ -72,7 +80,7 @@ color   main-head               213     default     bold
 color   graph-commit            226     default
 
 # status
-color  stat-head       81      default
+#color  stat-head       81      default
 
 # Diff   colors
 color   diff_add                10      default
