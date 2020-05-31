@@ -1,12 +1,20 @@
 if filereadable(expand('~/.vimrc.keymap'))
   source ~/.vimrc.keymap
 endif
+if filereadable(expand('~/.vimrc.vim-go'))
+  source ~/.vimrc.vim-go
+endif
 
 """"""""""""""""""""""""""""""
 " プラグインのセットアップ
 " プラグインを新規追加したあとは :PlugInstall
 """"""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
+
+" vim-airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 
 " ファイルオープンを便利に
 Plug 'Shougo/unite.vim'
@@ -17,13 +25,41 @@ Plug 'Shougo/vimproc'
 Plug 'Shougo/neomru.vim'
 
 " vim-go
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 
 " ファイル名検索
 Plug 'ctrlpvim/ctrlp.vim'
 
+" 独自のサブモードが使える
+"Plug 'kana/vim-submode'
+
+" Language Server
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-goimports'
+Plug 'mattn/vim-lsp-icons'
+
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+
 call plug#end()
 """"""""""""""""""""""""""""""
+
+nmap <silent> gd :LspDefinition<CR>
+nmap <silent> K :LspHover<CR>
+nmap <silent> <f2> :LspRename<CR>
+nmap <silent> <Leader>d :LspTypeDefinition<CR>
+nmap <silent> <Leader>r :LspReferences<CR>
+nmap <silent> <Leader>i :LspImplementation<CR>
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:asyncomplete_popup_delay = 600
+let g:lsp_text_edit_enabled = 1
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 0
 
 
 "" NERDTree
@@ -45,31 +81,54 @@ set shiftwidth=4
 " クリップボードとヤンクを同期
 set clipboard+=unnamed
 
-" vim-go
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_arguments = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_variable_assignments = 1
-let g:go_highlight_variable_declarations = 1
+""""""""""""""""""""""""""""
+"Airline
+""""""""""""""""""""""""""""
+" Smarter tab line有効化
+set laststatus=2
+" powerline font入れないと若干ダサい
+let g:airline_powerline_fonts = 1
 
-let g:go_fmt_command = "goimports"
+" for bling/vim-airline {{{
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_section_a = airline#section#create(['mode','','branch'])
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
+"let g:airline_theme='tomorrow'
+let g:airline_theme='papercolor'
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
 
-autocmd FileType go setlocal noexpandtab
-autocmd FileType go setlocal tabstop=4
-autocmd FileType go setlocal shiftwidth=4
-
-let g:go_metalinter_autosave = 1
-" lintはやめてvetだけ
-let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''

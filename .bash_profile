@@ -19,3 +19,5 @@ if [ -f '/Users/egapool/src/google-cloud-sdk/completion.bash.inc' ]; then . '/Us
 
 eval "$(rbenv init -)"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+export GO111MODULE=on

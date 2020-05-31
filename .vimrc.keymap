@@ -3,6 +3,9 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+
+inoremap jk <ESC>
+
 "" NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
@@ -32,6 +35,9 @@ nmap tl :Unite tab
 " Command-Shift+],[で移動した
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
+" buffer move
+map bp :bprevious<Return>
+map bn :bnext<Return>
 
 " Split window
 nmap ss :split<Return><C-w>w
@@ -69,3 +75,7 @@ let g:vimfiler_marked_file_icon = '✓'
 "inoremap {<Enter> {}<Left><CR><ESC><S-o>
 "inoremap ( ()<ESC>i
 "inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+" カーソルキーでbuffer移動
+nnoremap <Left> :bp<CR>
+nnoremap <Right> :bn<CR>

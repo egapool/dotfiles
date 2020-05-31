@@ -10,7 +10,8 @@ HISTTIMEFORMAT='%Y-%m-%d %T '
 HISTSIZE=10000
 
 #PS1='[\u@\h \W]$(__git_ps1 "[\[\033[32m\]%s\[\033[0m\]]")\$ '
-PS1='\h \W $(__git_ps1 "\[\[\033[32m\]%s\[\033[0m\]\]")\$ '
+#PS1='\h \W $(__git_ps1 "\[\[\033[32m\]%s\[\033[0m\]\]")\$ '
+PS1='\W\[\e[1;32m $(__git_ps1 "%s") \[\e[0m\]\$ '
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 alias dev='cd ~/Develop/'
@@ -35,6 +36,7 @@ alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias xdebug-disable='echo "" > /usr/local/etc/php/7.1/conf.d/xdebug.ini'
 alias xdebug-restore='cat /usr/local/etc/php/7.1/conf.d/xdebug.ini.back > /usr/local/etc/php/7.1/conf.d/xdebug.ini'
 alias xdebug-restore-cli='cat /usr/local/etc/php/7.1/conf.d/xdebug.cli.ini.back > /usr/local/etc/php/7.1/conf.d/xdebug.ini'
+alias less='less -S'
 
 alias release-diff="git log --merges --first-parent --reverse --pretty=format:'- [ ] %s %n %b %n' remotes/origin/master..remotes/origin/develop | sed -e 's/#\([0-9]\{4\}\)/https:\/\/github.com\/aerialpartners\/gtax-server\/pull\/\1/g' | sed -e 's/from aerialpartners\/feature\///g' | pbcopy;pbpaste"
 
