@@ -71,8 +71,8 @@ let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '✓'
 
 " 閉じカッコ補完
-"inoremap { {}<Left>
-"inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap { {}<Left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
 "inoremap ( ()<ESC>i
 "inoremap (<Enter> ()<Left><CR><ESC><S-o>
 

@@ -1,3 +1,6 @@
+syntax enable
+
+
 if filereadable(expand('~/.vimrc.keymap'))
   source ~/.vimrc.keymap
 endif
@@ -16,6 +19,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 
+" カラーテーマ
+Plug 'morhetz/gruvbox'
+
 " ファイルオープンを便利に
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler'
@@ -25,7 +31,7 @@ Plug 'Shougo/vimproc'
 Plug 'Shougo/neomru.vim'
 
 " vim-go
-" Plug 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " ファイル名検索
 Plug 'ctrlpvim/ctrlp.vim'
@@ -47,6 +53,9 @@ Plug 'hrsh7th/vim-vsnip-integ'
 
 call plug#end()
 """"""""""""""""""""""""""""""
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+set background=dark    " Setting dark mode
 
 nmap <silent> gd :LspDefinition<CR>
 nmap <silent> K :LspHover<CR>
@@ -56,10 +65,10 @@ nmap <silent> <Leader>r :LspReferences<CR>
 nmap <silent> <Leader>i :LspImplementation<CR>
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
-let g:asyncomplete_popup_delay = 600
+let g:asyncomplete_popup_delay = 1500
 let g:lsp_text_edit_enabled = 1
 let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_auto_completeopt = 1
 
 
 "" NERDTree
@@ -77,6 +86,8 @@ set nolazyredraw
 set expandtab
 set tabstop=4
 set shiftwidth=4
+" 指定行数前からスクロールする
+set scrolloff=3
 
 " クリップボードとヤンクを同期
 set clipboard+=unnamed
@@ -101,8 +112,8 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:Powerline_symbols = 'fancy'
 set t_Co=256
-"let g:airline_theme='tomorrow'
-let g:airline_theme='papercolor'
+let g:airline_theme='gruvbox'
+"let g:airline_theme='papercolor'
 " unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
