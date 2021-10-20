@@ -11,7 +11,8 @@ HISTSIZE=10000
 
 #PS1='[\u@\h \W]$(__git_ps1 "[\[\033[32m\]%s\[\033[0m\]]")\$ '
 #PS1='\h \W $(__git_ps1 "\[\[\033[32m\]%s\[\033[0m\]\]")\$ '
-PS1='\W\[\e[1;32m $(__git_ps1 "%s") \[\e[0m\]\$ '
+PS1='\W\[\e[1;32m $(__git_ps1 "%s") \[\e[0m\]
+\$ '
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 alias dev='cd ~/Develop/'
